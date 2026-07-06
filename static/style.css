@@ -1,0 +1,23 @@
+*{
+    margin:0px
+}
+
+#main, #canvas{
+   border: 2px solid black;
+}
+#canvas{
+    width:60%;
+    height:780px;
+    margin:auto;
+}
+
+#form-body{
+    border: 1px solid grey;
+    width: 30%;
+    height: 320px;
+    margin: auto;
+    margin-top: 230px;
+    border-radius: 5px;
+    padding: 10px;
+}
+

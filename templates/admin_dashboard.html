@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+<div id="main">
+    <div id="canvas">
+
+<div class="container mt-4">
+<h2 class="text-center mb-4">Admin Dashboard</h2>
+
+<!-- HEADER -->
+<div class="card mb-4">
+<div class="card-body d-flex justify-content-between">
+<h5>Welcome Admin</h5>
+<div class="d-flex">
+<input class="form-control me-2" placeholder="students, organizations">
+<button class="btn btn-primary">Search</button>
+</div>
+</div>
+</div>
+
+<!-- REGISTERED COMPANIES -->
+<div class="card mb-4">
+<div class="card-header">
+Registered Companies
+</div>
+<div class="card-body">
+{% for company in companies %}
+<div class="d-flex justify-content-between border p-2 mb-2">
+<span>{{ company.cname }}</span>
+<button class="btn btn-danger btn-sm">
+Blacklist
+</button>
+</div>
+{% endfor %}
+</div>
+</div>
+
+<!-- REGISTERED STUDENTS -->
+<div class="card mb-4">
+<div class="card-header">
+Registered Students
+</div>
+<div class="card-body">
+{% for student in students %}
+<div class="d-flex justify-content-between border p-2 mb-2">
+<span>{{ student.name }}</span>
+<button class="btn btn-danger btn-sm">
+Blacklist
+</button>
+</div>
+{% endfor %}
+</div>
+</div>
+
+<!-- COMPANY APPLICATIONS -->
+<div class="card mb-4">
+<div class="card-header">
+Company Applications
+</div>
+<div class="card-body">
+{% for company in pending_companies %}
+<div class="d-flex justify-content-between border p-2 mb-2">
+<span>{{ company.cname }}</span>
+<a href="/approve_company/{{ company.id }}" class="btn btn-success btn-sm">
+Approve
+</a>
+</div>
+{% endfor %}
+</div>
+</div>
+
+<!-- ONGOING DRIVES -->
+<div class="card mb-4">
+<div class="card-header">
+Ongoing Drives
+</div>
+<div class="card-body">
+<table class="table">
+<thead>
+<tr>
+<th>Sr No.</th>
+<th>Drive Name</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for drive in drives %}
+<tr>
+<td>{{ drive.drive_id }}</td>
+<td>{{ drive.job_title }}</td>
+<td>
+<a href="/drive/{{ drive.drive_id }}" class="btn btn-primary btn-sm">
+View Details
+</a>
+<a href="/complete_drive/{{ drive.drive_id }}" class="btn btn-success btn-sm">
+Mark as Complete
+</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- STUDENT APPLICATIONS -->
+<div class="card mb-4">
+<div class="card-header">
+Student Applications
+</div>
+<div class="card-body">
+<table class="table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Student</th>
+<th>Drive</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+{% for app in applications %}
+<tr>
+<td>{{ app.id }}</td>
+<td>{{ app.student.name }}</td>
+<td>{{ app.drive.job_title }}</td>
+<td>{{ app.application_date }}</td>
+<td>
+<button class="btn btn-primary btn-sm">View</button>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+</body>
+
+</html>

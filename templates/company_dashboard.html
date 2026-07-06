@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <div id="main">
+        <div id="canvas">
+
+<div class="container mt-4">
+
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<div class="container-fluid">
+<a class="navbar-brand">Company Dashboard</a>
+<ul class="navbar-nav ms-auto">
+<li class="nav-item">
+<a class="nav-link" href="/create_drive">Create Drive</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/logout">Logout</a>
+</li>
+</ul>
+</div>
+</nav>
+
+<!-- UPCOMING DRIVES -->
+<div class="card mb-4">
+<div class="card-header">
+Upcoming Drives
+</div>
+<div class="card-body">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>Job Title</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for drive in drives %}
+<tr>
+<td>{{ drive.drive_id }}</td>
+<td>{{ drive.job_title }}</td>
+<td>
+<a href="/drive/{{ drive.drive_id }}" class="btn btn-primary btn-sm">
+View Details
+</a>
+<a href="/complete_drive/{{ drive.drive_id }}" class="btn btn-success btn-sm">
+Mark Complete
+</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- DRIVE APPLICATIONS -->
+<div class="card mb-4">
+<div class="card-header">
+Student Applications
+</div>
+<div class="card-body">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>Student</th>
+<th>Drive</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+{% for app in applications %}
+<tr>
+<td>{{ app.id }}</td>
+<td>{{ app.student.name }}</td>
+<td>{{ app.drive.job_title }}</td>
+<td>{{ app.application_date }}</td>
+<td>
+<button class="btn btn-primary btn-sm">Review</button>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+
+</html>
