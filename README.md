@@ -44,6 +44,6 @@ with app.app_context():
 - move secret key + db path to env variables instead of hardcoding
 - add a proper admin signup
 
-## License
+## Author
 
-Not decided yet.
+Sneha Singh — IITM BS Data Science Program
